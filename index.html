@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Feliz Día Mi Amor</title>
+    
+    <style>
+        :root {
+            --soft-pink: #fce4ec;
+            --elegant-rose: #f8bbd0;
+            --white: #ffffff;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        * { padding: 0; margin: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #fdf5f7;
+        }
+
+        .container {
+            width: 320px;
+            padding: 30px;
+            background: var(--white);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .container h2 {
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .input-display {
+            font-size: 2rem;
+            letter-spacing: 15px;
+            color: #d81b60;
+            margin: 20px 0;
+            height: 50px;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .key {
+            padding: 15px;
+            font-size: 1.2rem;
+            background-color: #fff;
+            border: 2px solid var(--soft-pink);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0 #f48fb1;
+            color: #d81b60;
+            font-weight: 600;
+        }
+
+        .key:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #f48fb1;
+        }
+
+        .key:hover { background-color: #fff5f8; }
+
+        .key:last-child { grid-column: 2/3; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🔒 Ingrese la contraseña</h2>
+        <div class="input-display" id="inputDisplay">••••</div>
+        <div class="keypad">
+            <button class="key" onclick="enterDigit('1')">1</button>
+            <button class="key" onclick="enterDigit('2')">2</button>
+            <button class="key" onclick="enterDigit('3')">3</button>
+            <button class="key" onclick="enterDigit('4')">4</button>
+            <button class="key" onclick="enterDigit('5')">5</button>
+            <button class="key" onclick="enterDigit('6')">6</button>
+            <button class="key" onclick="enterDigit('7')">7</button>
+            <button class="key" onclick="enterDigit('8')">8</button>
+            <button class="key" onclick="enterDigit('9')">9</button>
+            <button class="key" onclick="enterDigit('0')">0</button>
+        </div>
+    </div>
+
+    <script>
+        const correctPassword = "1704";
+        const display = document.getElementById("inputDisplay");
+        let input = "";
+
+        function enterDigit(digit) {
+            if (input.length < 4) {
+                input += digit;
+            }
+            display.textContent = input.padEnd(4, "•");
+            if (input.length === 4) {
+                if (input === correctPassword) {
+                    window.location.href = "flower.html"; 
+                } else {
+                    setTimeout(() => {
+                        alert("Ups, esa no es. ¡Inténtalo de nuevo!");
+                        input = "";
+                        display.textContent = "••••";
+                    }, 200);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
